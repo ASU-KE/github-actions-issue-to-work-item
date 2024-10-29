@@ -81,6 +81,7 @@ jobs:
           ado_project: "your_project_name"
           ado_area_path: "optional_area_path\\optional_area_path"
           ado_iteration_path: "optional_iteration_path\\optional_iteration_path"
+          ado_parent_id: "optional_parent_work_item_id"
           ado_wit: "User Story"
           ado_new_state: "New"
           ado_active_state: "Active"
