@@ -192,8 +192,20 @@ async function create(vm) {
       op: "add",
       path: "/fields/Microsoft.VSTS.Common.BacklogPriority",
       value: 1
-    } 
+    }
   ];
+
+    // if ado_parent_id is not empty, set it
+    if (vm.env.ado_parent_id != "") {
+      patchDocument.push({
+        op: "add",
+        path: "/relations/-",
+        value: {
+          rel: "System.LinkTypes.Hierarchy-Reverse",//Add a parent link
+          url: `https://dev.azure.com/${vm.env.orgUrl}/${vm.env.project}/_apis/wit/workItems/${vm.env.parentId}`
+        }
+      });
+    }
 
   // if area path is not empty, set it
   if (vm.env.areaPath != "") {
