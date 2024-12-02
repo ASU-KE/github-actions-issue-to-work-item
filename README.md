@@ -37,6 +37,8 @@ The id of the Work Item created or updated
 
      **Warning:** Setting `log_level` to 300 will log out environment info, work items, and issue data. Only use 300 when debugging issues.
 
+   - `ado_parent_id`: Numerical id of work item in Azure DevOps that will be the parent item of the newly created work item.
+
 ```yaml
 name: Sync issue to Azure DevOps work item
 
@@ -64,6 +66,7 @@ jobs:
           ado_project: "your_project_name"
           ado_area_path: "optional_area_path\\optional_area_path"
           ado_iteration_path: "optional_iteration_path\\optional_iteration_path"
+          ado_parent_id: 123456789
           ado_wit: "User Story"
           ado_new_state: "New"
           ado_active_state: "Active"
