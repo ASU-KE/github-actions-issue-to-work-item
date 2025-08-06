@@ -622,11 +622,12 @@ async function updateIssueBody(vm, workItem) {
   var n = vm.body.includes("AB#" + workItem.id.toString());  
 
   if (!n) {
-    const octokit = new github.GitHub(vm.env.ghToken);
+    //const octokit = new github.GitHub(vm.env.ghToken);
+    const octokit = github.getOctokit(vm.env.ghToken);
     vm.body = vm.body + "\r\n\r\nAB#" + workItem.id.toString();
 
-    var result = await octokit.issues.update({
-      owner: vm.owner,
+    var result = await octokit.rest.issues.update({
+      owner: vm.organization,
       repo: vm.repository,
       issue_number: vm.number,
       body: vm.body,
